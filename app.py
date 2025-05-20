@@ -9,11 +9,11 @@ from bson.objectid import ObjectId
 
 load_dotenv()
 
-print(os.getenv("Mongo_URI"))
+print(os.getenv("MONGO_URI"))
 
 app = Flask(__name__)
 
-client = MongoClient(os.getenv("Mongo_URI"))
+client = MongoClient(os.getenv("MONGO_URI"))
 db = client.menuDB
 
 cloudinary.config(
