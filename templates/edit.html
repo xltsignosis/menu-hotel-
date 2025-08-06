@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Editar Item</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -14,7 +15,7 @@
       <textarea name="description" required>{{ item.description }}</textarea>
       <br>
       <p>Imagen actual:</p>
-      <img src="{{ item.imageUrl }}" width="150" alt="{{ item.name }}">
+      <img src="{{ item.imageUrl }}" width="30%" height="30%"  alt="{{ item.name }}">
       <br>
       <p>Subir nueva imagen (opcional):</p>
       <input type="file" name="image">

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Menú del Hotel</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -21,7 +22,7 @@
     <div class="item">
       <h3>{{ item.name }}</h3>
       <p>{{ item.description }}</p>
-      <img src="{{ item.imageUrl }}" width="150" alt="{{ item.name }}">
+      <img src="{{ item.imageUrl }}" width="30%" height="30%"  alt="{{ item.name }}">
 
       <div class="button-group">
         <form action="/delete/{{ item._id }}" method="post">

@@ -14,6 +14,7 @@ body {
 
 h1 {
   text-align: center;
+  color: white;
 }
 
 form {
@@ -60,14 +61,14 @@ button {
 
 
 .edit-item {
-  background-color: grey;
+  background-color: #b98c3f;
   padding: 35px;
   border-radius: 8px;
 }
 
 .button-group a {
   display: inline-block;
-  background-color: #333; /* Gris oscuro que combina bien */
+  background-color: #333;
   color: #fff;
   padding: 10px 20px;
   border-radius: 8px;
@@ -77,5 +78,44 @@ button {
 }
 
 .button-group a:hover {
-  background-color: #555; /* Ligeramente más claro al pasar el cursor */
+  background-color: #555;
+}
+
+
+/* codigo para que sea responsivo */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    background-attachment: scroll; 
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .item {
+    padding: 10px;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="file"] {
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
