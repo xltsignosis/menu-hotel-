@@ -7,22 +7,24 @@
 </head>
 <body>
   <h1>Editar Platillo</h1>
-
-  <form action="/update/{{ item._id }}" method="post" enctype="multipart/form-data">
-    <input type="text" name="name" value="{{ item.name }}" required>
-    <br>
-    <textarea name="description" required>{{ item.description }}</textarea>
-    <br>
-    <p>Imagen actual:</p>
-    <img src="{{ item.imageUrl }}" width="150" alt="{{ item.name }}">
-    <br>
-    <p>Subir nueva imagen (opcional):</p>
-    <input type="file" name="image">
-    <br><br>
-    <button type="submit">Actualizar</button>
-  </form>
-
+  <div class="edit-item">
+    <form action="/update/{{ item._id }}" method="post" enctype="multipart/form-data">
+      <input type="text" name="name" value="{{ item.name }}" required>
+      <br>
+      <textarea name="description" required>{{ item.description }}</textarea>
+      <br>
+      <p>Imagen actual:</p>
+      <img src="{{ item.imageUrl }}" width="150" alt="{{ item.name }}">
+      <br>
+      <p>Subir nueva imagen (opcional):</p>
+      <input type="file" name="image">
+      <br><br>
+      <button type="submit">Actualizar</button>
+    </form>
+  </div>
   <br>
-  <a href="/">Volver al inicio</a>
+  <div class="button-group">
+    <a href="/">Volver al inicio</a>
+  </div>
 </body>
 </html>
