@@ -4,28 +4,28 @@ Aplicación web full-stack en **Flask (Python)** para la gestión digital del me
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
-### 🛎️ Experiencia del Huésped (Carta Digital & Room Service)
+### Experiencia del Huésped (Carta Digital & Room Service)
 - **Filtro interactivo por categorías**: *Desayunos, Entradas, Platos Fuertes, Postres y Bebidas*.
 - **Filtros por preferencias dietéticas**: *Especial del Chef, Sin Gluten, Vegetariano, Vegano y Orgánico*.
 - **Búsqueda en tiempo real y ordenamiento**: Filtra instantáneamente por nombre o ingrediente y ordena por platillos destacados, precio o alfabéticamente.
 - **Bandeja de Room Service**: Carrito interactivo con ajuste de cantidades, cálculo automático de cargo por servicio a habitación (10%) y confirmación de pedido con generación de número de folio (`RS-XXXX`).
 
-### 👨‍🍳 Modo Chef / Administración
+### Modo Chef / Administración
 - **Conmutador de vista instantáneo**: Alterna entre **Vista Huésped** y **Modo Chef / Admin** desde la barra superior.
 - **Gestión completa de platillos (CRUD)**: Agrega nuevos platillos, edita información, precios, tiempos de preparación, etiquetas dietéticas y fotografías.
 - **Vista previa de imagen en vivo**: Previsualiza archivos locales (`JPG`, `PNG`, `WEBP`, `GIF`, `AVIF`) o enlaces URL antes de guardar.
 - **Control rápido de disponibilidad**: Marca cualquier platillo como *Disponible* o *Agotado temporalmente* con un solo clic.
 - **Confirmación de seguridad**: Modal de confirmación antes de eliminar un platillo de la carta.
 
-### 🗄️ Arquitectura de Persistencia Híbrida (Funciona sin configuración externa)
+### Arquitectura de Persistencia Híbrida (Funciona sin configuración externa)
 - **Base de datos**: Se conecta automáticamente a **MongoDB** si se define `MONGO_URI` en el archivo `.env`. Si no se configura o no hay conexión, utiliza automáticamente almacenamiento local persistente en `data/menu_items.json` precargado con 6 platillos de autor.
 - **Almacenamiento de imágenes**: Sube imágenes a **Cloudinary** cuando se configuran sus credenciales en `.env`, o las guarda automáticamente de forma local en `static/uploads/` cuando se ejecuta sin cuenta de Cloudinary.
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 menu-hotel-/
@@ -50,7 +50,7 @@ menu-hotel-/
 
 ---
 
-## 🚀 Cómo Ejecutar el Proyecto en Local
+## Cómo Ejecutar el Proyecto en Local
 
 ### 1. Prerrequisitos
 - **Python 3.10+** instalado en tu sistema.
@@ -108,11 +108,11 @@ gunicorn --bind 0.0.0.0:5000 app:app
 ```
 
 Abre tu navegador en:
-👉 **`http://localhost:5000`**
+**`http://localhost:5000`**
 
 ---
 
-## 🧪 Ejecutar las Pruebas Automatizadas
+## Ejecutar las Pruebas Automatizadas
 
 El proyecto incluye pruebas unitarias y de integración con `pytest` para verificar el listado de la carta, alta con subida de imágenes, actualización de platillos, cambio de disponibilidad y cálculo de órdenes de Room Service:
 
@@ -123,7 +123,7 @@ pytest -v
 
 ---
 
-## 🔌 Rutas y Endpoints Principales
+## Rutas y Endpoints Principales
 
 | Método | Ruta | Descripción |
 | :--- | :--- | :--- |
