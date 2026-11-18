@@ -1,0 +1,105 @@
+[
+  {
+    "_id": "66b0a1000000000000000001",
+    "name": "Huevos Benedictinos Royale",
+    "description": "Pan brioche artesanal tostado a la mantequilla con salmón ahumado del Atlántico, huevos pochados de granja, salsa holandesa sedosa al limón y jitomates cherry confitados.",
+    "price": 295.0,
+    "category": "Desayunos",
+    "dietary": [
+      "Especial del Chef",
+      "Orgánico"
+    ],
+    "prepTime": "15 min",
+    "calories": 580,
+    "available": true,
+    "featured": true,
+    "imageUrl": "/static/images/benedict.jpg",
+    "updatedAt": "2026-11-18T05:57:31.186602+00:00"
+  },
+  {
+    "_id": "66b0a1000000000000000002",
+    "name": "Burrata Pugliese & Jitomates Heirloom",
+    "description": "Burrata cremosa importada servida sobre jitomates reliquia de huerta local, hojas de albahaca fresca, aceite de oliva extra virgen prensado en frío y reducción de balsámico añejo.",
+    "price": 340.0,
+    "category": "Entradas",
+    "dietary": [
+      "Vegetariano",
+      "Sin Gluten",
+      "Orgánico"
+    ],
+    "prepTime": "10 min",
+    "calories": 420,
+    "available": true,
+    "featured": false,
+    "imageUrl": "/static/images/burrata.jpg",
+    "updatedAt": "2026-11-18T05:57:31.186622+00:00"
+  },
+  {
+    "_id": "66b0a1000000000000000003",
+    "name": "Ribeye Prime Añejado al Romero",
+    "description": "Corte Ribeye Prime de 400g sellado a las brasas con mantequilla de ajo rostizado y romero fresco, acompañado de puré rústico de papa con trufa negra.",
+    "price": 780.0,
+    "category": "Platos Fuertes",
+    "dietary": [
+      "Especial del Chef",
+      "Sin Gluten"
+    ],
+    "prepTime": "25 min",
+    "calories": 890,
+    "available": true,
+    "featured": true,
+    "imageUrl": "/static/images/ribeye.jpg",
+    "updatedAt": "2026-11-18T05:57:31.186628+00:00"
+  },
+  {
+    "_id": "66b0a1000000000000000004",
+    "name": "Salmón del Atlántico al Azafrán y Cítricos",
+    "description": "Filete de salmón con piel crujiente glaseado en reducción de naranja sanguina y hebras de azafrán español, sobre espárragos verdes a la parrilla y brotes orgánicos.",
+    "price": 560.0,
+    "category": "Platos Fuertes",
+    "dietary": [
+      "Sin Gluten",
+      "Orgánico"
+    ],
+    "prepTime": "20 min",
+    "calories": 610,
+    "available": true,
+    "featured": true,
+    "imageUrl": "/static/images/salmon.jpg",
+    "updatedAt": "2026-11-18T05:57:31.186634+00:00"
+  },
+  {
+    "_id": "66b0a1000000000000000005",
+    "name": "Fondant Tibio de Chocolate Valrhona 70%",
+    "description": "Volcán de chocolate oscuro con centro líquido, acompañado de helado artesanal de vainilla de Papantla, frambuesas frescas, crumble de almendra y lámina de oro comestible.",
+    "price": 265.0,
+    "category": "Postres",
+    "dietary": [
+      "Vegetariano",
+      "Especial del Chef"
+    ],
+    "prepTime": "18 min",
+    "calories": 540,
+    "available": true,
+    "featured": true,
+    "imageUrl": "/static/images/fondant.jpg",
+    "updatedAt": "2026-11-18T05:57:31.186639+00:00"
+  },
+  {
+    "_id": "66b0a1000000000000000006",
+    "name": "Elixir Botánico Ahumado",
+    "description": "Cóctel de autor con bourbon reposado, licor de naranja sanguina, amargo de angostura y esfera de hielo cristalino perfumado con humo de romero silvestre.",
+    "price": 240.0,
+    "category": "Bebidas",
+    "dietary": [
+      "Vegano",
+      "Sin Gluten"
+    ],
+    "prepTime": "5 min",
+    "calories": 195,
+    "available": true,
+    "featured": false,
+    "imageUrl": "/static/images/cocktail.jpg",
+    "updatedAt": "2026-11-18T05:57:31.186645+00:00"
+  }
+]

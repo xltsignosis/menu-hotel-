@@ -2,30 +2,171 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Editar Item</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Editar platillo de la carta gastronómica de Grand Hotel Aurelia.">
+  <title>Editar Platillo · {{ item.name }} | Grand Hotel Aurelia</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>Editar Platillo</h1>
-  <div class="edit-item">
-    <form action="/update/{{ item._id }}" method="post" enctype="multipart/form-data">
-      <input type="text" name="name" value="{{ item.name }}" required>
-      <br>
-      <textarea name="description" required>{{ item.description }}</textarea>
-      <br>
-      <p>Imagen actual:</p>
-      <img src="{{ item.imageUrl }}" width="30%" height="30%"  alt="{{ item.name }}">
-      <br>
-      <p>Subir nueva imagen (opcional):</p>
-      <input type="file" name="image">
-      <br><br>
-      <button type="submit">Actualizar</button>
-    </form>
-  </div>
-  <br>
-  <div class="button-group">
-    <a href="/">Volver al inicio</a>
-  </div>
+  <!-- TOP NAVIGATION BAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="brand" id="edit-brand-home-link">
+        <div class="brand-monogram" aria-hidden="true">A</div>
+        <div class="brand-text">
+          <span class="brand-title">Grand Hotel Aurelia</span>
+          <span class="brand-subtitle">Administración de Carta</span>
+        </div>
+      </a>
+
+      <div class="topbar-actions">
+        <a href="/" class="btn btn-outline-light" id="back-to-menu-btn">
+          ← Volver a la Carta
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FLASH MESSAGES -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container" role="status" aria-live="polite">
+        {% for category, message in messages %}
+          <div class="flash-banner {{ category }}">
+            <span>{{ message }}</span>
+            <button type="button" class="flash-close" onclick="this.parentElement.remove()" aria-label="Cerrar">&times;</button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- EDIT DISH CONTAINER -->
+  <main class="edit-page-container">
+    <div class="edit-card">
+      <div class="modal-header">
+        <h1>Editar Platillo · {{ item.name }}</h1>
+      </div>
+
+      <div class="modal-body">
+        <form action="/update/{{ item._id }}" method="post" enctype="multipart/form-data" id="edit-dish-form">
+          <input type="hidden" name="available_present" value="1">
+          <input type="hidden" name="featured_present" value="1">
+          <input type="hidden" name="dietary_present" value="1">
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="edit-name">Nombre del Platillo *</label>
+              <input type="text" id="edit-name" name="name" class="form-input" value="{{ item.name }}" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-price">Precio (MXN) *</label>
+              <input type="number" id="edit-price" name="price" class="form-input" step="0.01" min="0" value="{{ '%.2f'|format(item.price) }}" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-category">Categoría</label>
+              <select id="edit-category" name="category" class="form-select">
+                {% for cat in categories %}
+                  <option value="{{ cat }}" {% if item.category == cat %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-preptime">Tiempo de preparación</label>
+              <input type="text" id="edit-preptime" name="prepTime" class="form-input" value="{{ item.prepTime or '15-20 min' }}">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="edit-description">Descripción gastronómica *</label>
+              <textarea id="edit-description" name="description" class="form-textarea" required>{{ item.description }}</textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <span class="form-label">Estado y Distintivos</span>
+              <div class="checkbox-pills">
+                <label class="checkbox-pill">
+                  <input type="checkbox" name="available" value="true" {% if item.available %}checked{% endif %}>
+                  <span>Disponible para ordenar</span>
+                </label>
+
+                <label class="checkbox-pill">
+                  <input type="checkbox" name="featured" value="true" {% if item.featured %}checked{% endif %}>
+                  <span>★ Especialidad Destacada</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <span class="form-label">Etiquetas Dietéticas</span>
+              <div class="checkbox-pills">
+                {% for tag in dietary_options %}
+                  <label class="checkbox-pill">
+                    <input type="checkbox" name="dietary" value="{{ tag }}" {% if tag in item.dietary %}checked{% endif %}>
+                    <span>{{ tag }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <span class="form-label">Fotografía del Platillo (opcional subir nueva)</span>
+              <div class="image-upload-zone">
+                <div class="image-preview-box">
+                  <img
+                    id="edit-image-preview"
+                    src="{{ item.imageUrl }}"
+                    alt="{{ item.name }}"
+                    onerror="this.src='/static/images/ribeye.jpg'"
+                  >
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    id="edit-image-file"
+                    name="image"
+                    accept="image/*"
+                    class="form-input"
+                    data-image-input
+                    data-preview-target="edit-image-preview"
+                    style="margin-bottom: 0.5rem;"
+                  >
+                  <input
+                    type="text"
+                    id="edit-image-url"
+                    name="imageUrl"
+                    class="form-input"
+                    placeholder="O reemplaza con una URL de imagen"
+                    data-image-url-input
+                    data-preview-target="edit-image-preview"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--border-warm);">
+            <a href="/" class="btn btn-ghost">Cancelar y volver</a>
+            <button type="submit" class="btn btn-primary" id="save-edit-btn">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Grand Hotel Aurelia</strong> · Administración de Carta Gastronómica
+      </div>
+      <div>
+        <a href="/" style="color: var(--accent-gold); text-decoration: none;">Volver al inicio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
